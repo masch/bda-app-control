@@ -1,0 +1,24 @@
+{
+    "appliances": [
+        {
+            "appliance": "horno",
+            "settemp": 85,
+            "actualtemp": 0
+        },
+        {
+            "appliance": "heladera",
+            "settemp": 24,
+            "actualtemp": 24
+        },
+        {
+            "appliance": "heladera-doble-1",
+            "settemp": 24,
+            "actualtemp": 24
+        },
+        {
+            "appliance": "heladera-doble-2",
+            "settemp": 4,
+            "actualtemp": 4
+        }
+    ]
+}

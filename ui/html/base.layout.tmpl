@@ -1,0 +1,29 @@
+{{define "base"}}
+<!doctype html>
+<html lang='en'>
+    <head>
+        <meta charset='utf-8'>
+        <title>{{template "title" .}} - Bosques de Agua</title>
+        <link rel='stylesheet' href='/static/css/main.css'>
+        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu'>
+        <link rel='icon' href='/static/img/favicon.ico' type='image/x-icon'>
+    </head>
+    <body>
+        <header>
+            <h1><a href='/bosquesdeagua'>Sistema de Control</a></h1>
+        </header>
+        <nav>
+            <a href='/bosquesdeagua'>Home</a>
+            <a href='/bosquesdeagua/horno'>Horno Secador</a>
+            <a href='/bosquesdeagua/heladera'>Germinadora</a>
+            <a href='/bosquesdeagua/heladera-doble-1'>Doble Sup.</a>
+            <a href='/bosquesdeagua/heladera-doble-2'>Doble Inf.</a>
+        </nav>
+        <section>
+            {{template "body" .}}
+        </section>
+        {{template "footer" .}}
+        <script src="/static/js/main.js" type="text/javascript"></script>
+    </body>
+</html>
+{{end}}
