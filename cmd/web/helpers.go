@@ -49,6 +49,15 @@ func (app *application) badRequest(w http.ResponseWriter) {
 	app.clientError(w, http.StatusBadRequest)
 }
 
+// Create schema in database
+func (app *application) createSchema() {
+	_, err := db.NewRaw("CREATE SCHEMA IF NOT EXISTS bosque").Exec(ctx)
+	if err != nil {
+		app.errorLog.Fatal(err)
+	}
+	app.infoLog.Println("Schema 'bosque' created or already exists.")
+}
+
 // Check for table name in database
 func (app *application) checkTable(table string) bool {
 	exist, err := db.NewSelect().

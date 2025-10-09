@@ -55,6 +55,8 @@ func main() {
 		Handler:  app.routes(),
 	}
 
+	app.createSchema()
+
 	println("Checking for tables")
 	//Check and create tables in DB if not present
 	existTableAppliances := app.checkTable("appliances")
