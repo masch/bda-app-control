@@ -15,6 +15,7 @@ import (
 func main() {
 	type Config struct {
 		Addr      string
+		BasePath  string
 		StaticDir string
 	}
 
@@ -40,7 +41,8 @@ func main() {
 	db.AddQueryHook(bundebug.NewQueryHook(bundebug.WithVerbose(true)))
 
 	//Webserver Flags
-	flag.StringVar(&cfg.Addr, "addr", ":4000", "HTTP Network address")
+	flag.StringVar(&cfg.Addr, "addr", "localhost:4000", "HTTP Network address")
+	flag.StringVar(&cfg.BasePath, "base", "/bosquesdeagua", "Base path for the application")
 	flag.StringVar(&cfg.StaticDir, "static", "./ui/static", "Path to static files")
 	flag.Parse()
 
@@ -83,7 +85,7 @@ func main() {
 
 	//WebServer initialization
 	infoLog.Printf("\n - App de Control Ver. %s -\n", AppVersion)
-	infoLog.Printf("Starting server on localhost%s", cfg.Addr)
+	infoLog.Printf("Starting server on localhost: http://%s", cfg.Addr+cfg.BasePath)
 	err = srv.ListenAndServe()
 	errorLog.Fatal(err)
 
