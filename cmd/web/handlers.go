@@ -126,7 +126,7 @@ func (app *application) heladeraDoble1(w http.ResponseWriter, r *http.Request) {
 
 	var appliance = new(Appliance)
 	appliance.ActualTemp = app.readTempDB("heladera-doble-1", "actualtemp")
-	appliance.SetTemp = app.readTempDB("heladera-doble-2", "settemp")
+	appliance.SetTemp = app.readTempDB("heladera-doble-1", "settemp")
 
 	err = ts.Execute(w, appliance)
 	if err != nil {
