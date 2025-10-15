@@ -23,24 +23,10 @@ These instructions will get you a copy of the project up and running on your loc
 
     This project uses a PostgreSQL database. You can use the following `podman` commands to start a PostgreSQL container:
 
-    - **Pull the PostgreSQL image:**
+    - **Pull and init database container:**
 
       ```sh
-      podman pull docker.io/library/postgres:16
-      ```
-
-    - **Create a volume and start the container:**
-
-      ```sh
-      podman volume create bda-pgdata && \
-      podman run -d \
-        --name bda-db \
-        -e POSTGRES_USER=tabaquillo \
-        -e POSTGRES_PASSWORD=tabaquillo \
-        -e POSTGRES_DB=bosque \
-        -p 5432:5432 \
-        -v bda-pgdata:/var/lib/postgresql/data \
-        postgres:16
+      make db-init
       ```
 
     - **Test the database connection:**
@@ -59,7 +45,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 3.  **Set up the environment variables:**
 
-    Create a `.env` file in the root of the project with the following content:
+    Create a `.env` file in the root of the project with the following content using `.env.template` file as a template:
 
     ```
     DB_HOST=

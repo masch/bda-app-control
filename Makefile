@@ -1,6 +1,7 @@
 .PHONY: run build test
 
 db-init:
+	podman pull docker.io/library/postgres:16-alpine && \
 	podman volume create bda-pgdata && \
 	podman run -d \
 	--name bda-db \
@@ -9,7 +10,7 @@ db-init:
 	-e POSTGRES_DB=bosque \
 	-p 5432:5432 \
 	-v bda-pgdata:/var/lib/postgresql/data \
-	postgres:16
+	postgres:16-alpine
 
 db-start:
 	podman start bda-db
