@@ -25,7 +25,7 @@ init:
 	$(MAKE) db-start
 
 run:
-	go run ./cmd/web
+	go run ./cmd/web -addr="localhost:4000" -base="/bosquesdeagua"
 
 build:
 	go build -o ./bin/app ./cmd/web

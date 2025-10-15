@@ -41,8 +41,8 @@ func main() {
 	db.AddQueryHook(bundebug.NewQueryHook(bundebug.WithVerbose(true)))
 
 	//Webserver Flags
-	flag.StringVar(&cfg.Addr, "addr", "localhost:4000", "HTTP Network address")
-	flag.StringVar(&cfg.BasePath, "base", "/bosquesdeagua", "Base path for the application")
+	flag.StringVar(&cfg.Addr, "addr", ":4000", "HTTP Network address")
+	flag.StringVar(&cfg.BasePath, "base", "", "Base path for the application")
 	flag.StringVar(&cfg.StaticDir, "static", "./ui/static", "Path to static files")
 	flag.Parse()
 
