@@ -1,4 +1,11 @@
-# Bosques de Agua App Control
+<div align="center">
+  <img src="images/cropped-logo-blanco-big.webp" alt="logo" width="500"/>
+  </br>
+  </br>
+
+</div>
+
+# App Control
 
 Bosques de Agua App Control is a web application for controlling and monitoring appliances.
 
