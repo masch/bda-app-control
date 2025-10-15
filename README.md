@@ -1,6 +1,6 @@
-# BDA App Control
+# Bosques de Agua App Control
 
-BDA App Control is a web application for controlling and monitoring appliances.
+Bosques de Agua App Control is a web application for controlling and monitoring appliances.
 
 ## Getting Started
 
@@ -16,7 +16,7 @@ These instructions will get you a copy of the project up and running on your loc
 1.  **Clone the repository:**
 
     ```sh
-    git clone git@github.com:masch/BDA-app-control.git
+    git clone git@github.com:masch/bda-app-control.git
     ```
 
 2.  **Set up the database:**
