@@ -17,6 +17,9 @@ db-start:
 db-stop:
 	podman stop bda-db
 
+init:
+	$(MAKE) db-start
+
 run:
 	go run ./cmd/web
 
