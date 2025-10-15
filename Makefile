@@ -17,6 +17,9 @@ db-start:
 db-stop:
 	podman stop bda-db
 
+db-connect:
+	podman exec -it bda-db psql -U tabaquillo -d bosque
+
 init:
 	$(MAKE) db-start
 
