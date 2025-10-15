@@ -6,9 +6,18 @@
   <p>Temperatura Actual: </p><h2>{{printf "%.2f" .ActualTemp}}</h2>
   <p>Temperatura de trabajo: </p><h2>{{printf "%.2f" .SetTemp}}</h2>
   <div class='metadata'>
-    <form><label for="temp">Nueva temperatura de trabajo: </label>
-          <input type="text" id="temp" name="temp">
-          <input type="button" class="a" id="heladera-doble-2" value="Guardar" onclick="sendTemp(this)">
+    <form onsubmit="submitTemp(event)">
+      <label for="temp">Nueva temperatura de trabajo: </label>
+      <input type="text" id="temp" name="temp">
+      <button type="submit" class="form-button" id="heladera-doble-2">Guardar</button>
+    </form>
   </div>
 </div>
+<script>
+function submitTemp(event) {
+    event.preventDefault();
+    var button = document.getElementById('heladera-doble-2');
+    sendTemp(button);
+}
+</script>
 {{end}}

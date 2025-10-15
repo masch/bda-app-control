@@ -142,7 +142,7 @@ nav a.live:after {
     -webkit-transform: rotate(-45deg);
 }
 
-a.button, input {
+a.button, input, .form-button {
     background-color: #62CB31;
     border-radius: 3px;
     color: #FFFFFF;
@@ -152,7 +152,7 @@ a.button, input {
     margin-top: 18px;
     font-weight: 700;
 }
-a.button:hover, input:hover {
+a.button:hover, input:hover, .form-button:hover {
     background-color: #4EB722;
     color: #FFFFFF;
     cursor: pointer;
