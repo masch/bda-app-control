@@ -1,8 +1,9 @@
 <div align="center">
-  <img src="images/cropped-logo-blanco-big.webp" alt="logo" width="500"/>
+  <a href="https://bosquesdeagua.ar/">
+    <img src="images/cropped-logo-blanco-big.webp" alt="logo" width="500"/>
+  </a>
   </br>
   </br>
-
 </div>
 
 # App Control
