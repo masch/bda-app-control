@@ -31,12 +31,16 @@ section {
 h1 a {
     font-size: 36px;
     font-weight: bold;
-    background-image: url("/static/img/logo.png");
     background-repeat: no-repeat;
     background-position: 0px 0px;
     height: 36px;
     padding-left: 50px;
     position: relative;
+}
+
+img.logo {
+    width: 76px;
+    height: auto;
 }
 
 h1 a:hover {
