@@ -10,7 +10,7 @@ import (
 
 // #GET# Server alive
 func (app *application) status(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/bosquesdeagua/status" {
+	if r.URL.Path != app.config.BasePath+"status" {
 		w.WriteHeader(http.StatusOK)
 	}
 	return
@@ -18,7 +18,7 @@ func (app *application) status(w http.ResponseWriter, r *http.Request) {
 
 // #PAGINA# Homepage
 func (app *application) home(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/bosquesdeagua" {
+	if r.URL.Path != app.config.BasePath {
 		app.notFound(w)
 		return
 	}
@@ -35,7 +35,10 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = ts.Execute(w, nil)
+	err = ts.Execute(w, &TemplateData{
+		BasePath:  app.config.BasePath,
+		StaticDir: app.config.StaticDir,
+	})
 	if err != nil {
 		app.serverError(w, err)
 		return
@@ -44,7 +47,7 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) {
 
 // #PAGINA# Horno
 func (app *application) horno(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/bosquesdeagua/horno" {
+	if r.URL.Path != app.config.BasePath+"horno" {
 		app.notFound(w)
 		return
 	}
@@ -66,7 +69,11 @@ func (app *application) horno(w http.ResponseWriter, r *http.Request) {
 	appliance.ActualTemp = app.readTempDB("horno", "actualtemp")
 	appliance.SetTemp = app.readTempDB("horno", "settemp")
 
-	err = ts.Execute(w, appliance)
+	err = ts.Execute(w, &TemplateData{
+		BasePath:  app.config.BasePath,
+		StaticDir: app.config.StaticDir,
+		Appliance: appliance,
+	})
 	if err != nil {
 		app.serverError(w, err)
 		return
@@ -75,7 +82,7 @@ func (app *application) horno(w http.ResponseWriter, r *http.Request) {
 
 // #PAGINA# Heladera simple
 func (app *application) heladera(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/bosquesdeagua/heladera" {
+	if r.URL.Path != app.config.BasePath+"heladera" {
 		app.notFound(w)
 		return
 	}
@@ -97,7 +104,11 @@ func (app *application) heladera(w http.ResponseWriter, r *http.Request) {
 	appliance.ActualTemp = app.readTempDB("heladera", "actualtemp")
 	appliance.SetTemp = app.readTempDB("heladera", "settemp")
 
-	err = ts.Execute(w, appliance)
+	err = ts.Execute(w, &TemplateData{
+		BasePath:  app.config.BasePath,
+		StaticDir: app.config.StaticDir,
+		Appliance: appliance,
+	})
 	if err != nil {
 		app.serverError(w, err)
 		return
@@ -106,7 +117,7 @@ func (app *application) heladera(w http.ResponseWriter, r *http.Request) {
 
 // #PAGINA# Heladera Doble Superior
 func (app *application) heladeraDoble1(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/bosquesdeagua/heladera-doble-1" {
+	if r.URL.Path != app.config.BasePath+"heladera-doble-1" {
 		app.notFound(w)
 		return
 	}
@@ -128,7 +139,11 @@ func (app *application) heladeraDoble1(w http.ResponseWriter, r *http.Request) {
 	appliance.ActualTemp = app.readTempDB("heladera-doble-1", "actualtemp")
 	appliance.SetTemp = app.readTempDB("heladera-doble-1", "settemp")
 
-	err = ts.Execute(w, appliance)
+	err = ts.Execute(w, &TemplateData{
+		BasePath:  app.config.BasePath,
+		StaticDir: app.config.StaticDir,
+		Appliance: appliance,
+	})
 	if err != nil {
 		app.serverError(w, err)
 		return
@@ -137,7 +152,7 @@ func (app *application) heladeraDoble1(w http.ResponseWriter, r *http.Request) {
 
 // #PAGINA# Heladera Doble Inferior
 func (app *application) heladeraDoble2(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/bosquesdeagua/heladera-doble-2" {
+	if r.URL.Path != app.config.BasePath+"heladera-doble-2" {
 		app.notFound(w)
 		return
 	}
@@ -159,7 +174,11 @@ func (app *application) heladeraDoble2(w http.ResponseWriter, r *http.Request) {
 	appliance.ActualTemp = app.readTempDB("heladera-doble-2", "actualtemp")
 	appliance.SetTemp = app.readTempDB("heladera-doble-2", "settemp")
 
-	err = ts.Execute(w, appliance)
+	err = ts.Execute(w, &TemplateData{
+		BasePath:  app.config.BasePath,
+		StaticDir: app.config.StaticDir,
+		Appliance: appliance,
+	})
 	if err != nil {
 		app.serverError(w, err)
 		return

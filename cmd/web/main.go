@@ -13,11 +13,6 @@ import (
 )
 
 func main() {
-	type Config struct {
-		Addr      string
-		BasePath  string
-		StaticDir string
-	}
 
 	var env = godotenv.Load(".env")
 	if env != nil {
@@ -43,18 +38,19 @@ func main() {
 	//Webserver Flags
 	flag.StringVar(&cfg.Addr, "addr", ":4000", "HTTP Network address")
 	flag.StringVar(&cfg.BasePath, "base", "", "Base path for the application")
-	flag.StringVar(&cfg.StaticDir, "static", "./ui/static", "Path to static files")
+	flag.StringVar(&cfg.StaticDir, "static", "./static", "Path to static files")
 	flag.Parse()
 
 	app := &application{
 		errorLog: errorLog,
 		infoLog:  infoLog,
+		config:   cfg,
 	}
 
 	srv := &http.Server{
 		Addr:     cfg.Addr,
 		ErrorLog: errorLog,
-		Handler:  app.routes(),
+		Handler:  app.routes(cfg.BasePath),
 	}
 
 	app.createSchema()

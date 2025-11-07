@@ -3,8 +3,8 @@
 {{define "body"}}
 <h1>Control Germinadora</h1>
 <div class="snippet" id="controls">
-  <p>Temperatura Actual: </p><h2>{{printf "%.2f" .ActualTemp}}</h2>
-  <p>Temperatura de trabajo: </p><h2>{{printf "%.2f" .SetTemp}}</h2>
+  <p>Temperatura Actual: </p><h2>{{printf "%.2f" .Appliance.ActualTemp}}</h2>
+  <p>Temperatura de trabajo: </p><h2>{{printf "%.2f" .Appliance.SetTemp}}</h2>
   <div class='metadata'>
     <form><label for="temp">Nueva temperatura de trabajo: </label>
           <input type="text" id="temp" name="temp">
