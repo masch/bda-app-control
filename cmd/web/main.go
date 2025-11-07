@@ -16,7 +16,7 @@ func main() {
 
 	var env = godotenv.Load(".env")
 	if env != nil {
-		log.Fatal("Error loading .env file")
+		log.Println("***Error loading .env file. Load values from environment variables.***")
 	}
 
 	var AppVersion = os.Getenv("VERSION")
@@ -26,6 +26,9 @@ func main() {
 	errorLog := log.New(os.Stderr, "ERROR\t", log.Ldate|log.Ltime|log.Lshortfile)
 
 	data, err := os.ReadFile("./cmd/db/appliances.json")
+	if err != nil {
+		errorLog.Fatal(err)
+	}
 	var extracted ApplianceList
 	err = json.Unmarshal(data, &extracted)
 	if err != nil {
