@@ -24,8 +24,12 @@ db-connect:
 init:
 	$(MAKE) db-start
 
-run:
-	go run ./cmd/web -addr="0.0.0.0:4000" -base="/bosquesdeagua"
+run-internal:
+	go run ./cmd/web -addr="0.0.0.0:4000" -base="/bosquesdeagua/" -static="/static/"
+
+run-exteral:
+	go run ./cmd/web -addr="0.0.0.0:4000" -base="/app" -static="/app/static/"
+
 
 build:
 	go build -o ./bin/app ./cmd/web

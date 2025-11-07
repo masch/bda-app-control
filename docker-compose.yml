@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  grafana:
+    image: grafana/grafana
+    container_name: bda-grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=bda-root
+      - GF_SERVER_ROOT_URL=http://localhost:8080/monitor
+    volumes:
+      - bda-grafana-storage:/var/lib/grafana:z
+    restart: always
+
+  proxy:
+    image: docker.io/nginx:alpine
+    container_name: bda-proxy
+    ports:
+      - "8080:80"
+    volumes:
+      - ./proxy.conf:/etc/nginx/conf.d/default.conf:z
+    depends_on:
+      - grafana
+    restart: always
+
+volumes:
+  bda-grafana-storage: {}

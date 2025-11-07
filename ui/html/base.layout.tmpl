@@ -4,28 +4,28 @@
     <head>
         <meta charset='utf-8'>
         <title>{{template "title" .}} - Bosques de Agua</title>
-        <link rel='stylesheet' href='/static/css/main.css'>
+        <link rel='stylesheet' href='{{.StaticDir}}/css/main.css'>
         <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu'>
-        <link rel='icon' href='/static/img/favicon.ico' type='image/x-icon'>
+        <link rel='icon' href='{{.BasePath}}static/img/favicon.ico' type='image/x-icon'>
     </head>
     <body>
         <header>
-            <img class="logo" src="/static/img/logo.png" alt="logo"/>
-            <h1><a href='/bosquesdeagua'>Bosques que agua</a></h1>
-            <h1><a href='/bosquesdeagua'>Sistema de control</a></h1>
+            <img class="logo" src="{{.StaticDir}}/img/logo.png" alt="logo"/>
+            <h1><a href='{{.BasePath}}'>Bosques que agua</a></h1>
+            <h1><a href='{{.BasePath}}'>Sistema de control</a></h1>
         </header>
         <nav>
-            <a href='/bosquesdeagua'>Home</a>
-            <a href='/bosquesdeagua/horno'>Horno Secador</a>
-            <a href='/bosquesdeagua/heladera'>Germinadora</a>
-            <a href='/bosquesdeagua/heladera-doble-1'>Doble Sup.</a>
-            <a href='/bosquesdeagua/heladera-doble-2'>Doble Inf.</a>
+            <a href='{{.BasePath}}'>Home</a>
+            <a href='{{.BasePath}}/horno'>Horno Secador</a>
+            <a href='{{.BasePath}}/heladera'>Germinadora</a>
+            <a href='{{.BasePath}}/heladera-doble-1'>Doble Sup.</a>
+            <a href='{{.BasePath}}/heladera-doble-2'>Doble Inf.</a>
         </nav>
         <section>
             {{template "body" .}}
         </section>
         {{template "footer" .}}
-        <script src="/static/js/main.js" type="text/javascript"></script>
+        <script src="{{.StaticDir}}/js/main.js" type="text/javascript"></script>
     </body>
 </html>
 {{end}}

@@ -1,10 +1,17 @@
 package main
 
 import (
-	"github.com/uptrace/bun"
 	"log"
 	"time"
+
+	"github.com/uptrace/bun"
 )
+
+type Config struct {
+	Addr      string
+	BasePath  string
+	StaticDir string
+}
 
 type Appliance struct {
 	bun.BaseModel `bun:"table:bosque.appliances"`
@@ -20,6 +27,13 @@ type ApplianceList struct {
 type application struct {
 	errorLog *log.Logger
 	infoLog  *log.Logger
+	config   *Config
+}
+
+type TemplateData struct {
+	StaticDir string
+	BasePath  string
+	Appliance *Appliance
 }
 
 type TempLog struct {
