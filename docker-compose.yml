@@ -6,9 +6,18 @@ services:
     container_name: bda-grafana
     env_file:
       - .env
+    environment:
+      - INFLUXDB_TOKEN=${INFLUXDB_TOKEN}
+      - INFLUXDB_ORG=${INFLUXDB_ORG}
+      - INFLUXDB_BUCKET=${INFLUXDB_BUCKET}
+    ports:
+      - "3000:3000"
     volumes:
       - bda-grafana-storage:/var/lib/grafana:z
+      - ./grafana/provisioning:/etc/grafana/provisioning:z
     restart: always
+    depends_on:
+      - influxdb
 
   proxy:
     image: docker.io/nginx:alpine
@@ -32,6 +41,7 @@ services:
       - .env
     depends_on:
       - db
+      - influxdb
 
   db:
     image: postgres:16-alpine
@@ -46,6 +56,23 @@ services:
       - bda-pgdata:/var/lib/postgresql/data
     restart: always
 
+  influxdb:
+    image: influxdb:2.7
+    container_name: bda-influxdb
+    ports:
+      - "8086:8086"
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=${INFLUXDB_USERNAME}
+      - DOCKER_INFLUXDB_INIT_PASSWORD=${INFLUXDB_PASSWORD}
+      - DOCKER_INFLUXDB_INIT_ORG=${INFLUXDB_ORG}
+      - DOCKER_INFLUXDB_INIT_BUCKET=${INFLUXDB_BUCKET}
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=${INFLUXDB_TOKEN}
+    volumes:
+      - bda-influxdb-storage:/var/lib/influxdb2
+    restart: always
+
 volumes:
   bda-grafana-storage: {}
   bda-pgdata: {}
+  bda-influxdb-storage: {}
