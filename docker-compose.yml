@@ -57,7 +57,7 @@ services:
     restart: always
 
   influxdb:
-    image: influxdb:2.7
+    image: docker.io/influxdb:2.7
     container_name: bda-influxdb
     ports:
       - "8086:8086"
