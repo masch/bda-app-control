@@ -30,6 +30,11 @@ run-internal:
 run-exteral:
 	go run ./cmd/web -addr="0.0.0.0:4000" -base="/app" -static="/app/static/"
 
+run-containers-services:
+	podman-compose -f "docker-compose.yml" up -d grafana proxy db influxdb --build --force-recreate
+
+run-containers-all:
+	podman-compose -f "docker-compose.yml" up -d --build --force-recreate
 
 build:
 	go build -o ./bin/app ./cmd/web
